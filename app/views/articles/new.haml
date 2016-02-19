@@ -1,0 +1,52 @@
+-#=javascript_include_tag "bbs"
+-#=javascript_include_tag "jquery"
+-#=stylesheet_link_tag "bbs"
+.big-image
+  %span
+  %img.image-big
+#all-info.div-info
+  -@article.each do |h|
+    .div-style
+      .head
+        .head-image
+          %img.head-img{:src => "/touxiang.jpg"}
+        .person
+          %p
+            小雪雪
+          2小时以前
+        .arrow
+          %img.btn-arrow{:src=>"/arrow.png"}
+      .image#show-image
+        %img#image-show{:src=>h.photo  }
+
+      .content
+        =h.text
+      .btn-left
+        %img.image-btn-left{:src => "/heart.png"}
+        %img.image-btn-left{:src => "/eye.png"}
+      .btn-right
+        %img.image-btn-right{:src => "/heart.png"}
+        %img.image-btn-right{:src => "/pinglun.png"}
+        %img.image-btn-right{:src => "/share.png"}
+  .mini-image
+    %img.image-mini#mini
+    %img.cancel-image{:src => "/cancel.png"}
+  .footer
+    =form_for :file ,:url=> '/save_image' do |f|
+      %span.fileinputs
+        %img.put-image{:src => "/tupian.png"}
+      =f.file_field :file ,:onchange =>"show_mini()"
+      =f.text_area :text ,:placeholder=>'请输入你的图片配文..'
+
+      %span.enter
+        发 送
+      =f.submit :value =>"发送"
+
+-##adv.advbox
+-#  .album#picture从相册中选择
+-#  -#%input.photo#camera{:type => "button",:value => "拍照"}
+-#  .photo#picture{:style => "width: 100%;"} 拍照
+-#  -#%canvas#canvas{:height => "480", :width => "640"}
+-#  .cancle{:onclick =>"cancle()  "}
+-#    取消
+

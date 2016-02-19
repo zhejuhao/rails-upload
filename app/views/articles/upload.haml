@@ -1,0 +1,10 @@
+=javascript_include_tag "bbs"
+=javascript_include_tag "jquery"
+=stylesheet_link_tag "bbs"
+=form_for :file ,:url=> '/save_image' do |f|
+  =f.file_field :file
+  =f.text_area :text
+  =f.submit
+  -@photo.each do |h|
+    %img{:src=>h.photo}
+
